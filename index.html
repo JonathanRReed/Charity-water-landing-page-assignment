@@ -4,10 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>charity: water — Make Waves, Not Wishes</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Beginner-friendly: using a clean, widely available font stack. You can swap later to your exact brand fonts. -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -21,6 +17,8 @@
       <nav class="nav">
         <a href="#story">Our Work</a>
         <a href="#impact">Impact</a>
+        <a href="#calculator">Calculator</a>
+        <a href="#tracker">Progress</a>
         <a href="#donate" class="btn btn-primary">Donate</a>
       </nav>
     </div>
@@ -30,7 +28,7 @@
   <main id="top">
     <section class="hero">
       <div class="container hero-grid">
-        <div class="hero-copy card">
+        <div class="hero-copy">
           <div class="tape" aria-hidden="true"></div>
           <h1 class="headline">Make Waves, Not Wishes</h1>
           <p class="subhead">See your impact beyond the donate button.</p>
@@ -41,7 +39,7 @@
 
         <figure class="hero-media">
           <div class="photo-frame">
-            <img src="Assests/CW.jpg" alt="Smiling child drinking clean water" />
+            <img src="Assests/CW.jpg" alt="Smiling child drinking clean water" loading="eager" decoding="async" fetchpriority="high" />
           </div>
           <figcaption class="visually-hidden">Your donation helps bring clean, safe water to communities.</figcaption>
         </figure>
@@ -94,6 +92,92 @@
             <div class="stat-number">50+</div>
             <div class="stat-label">Countries</div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact Calculator -->
+    <section id="calculator" class="section pad-large impact-calculator">
+      <div class="container">
+        <div class="section-intro">
+          <h2>Make Your Impact Tangible</h2>
+          <p>Select a gift to see what it can help provide.</p>
+        </div>
+
+        <div class="calc">
+          <fieldset>
+            <legend>Choose an amount</legend>
+            <div class="calc-options">
+              <!-- Radios are hidden but accessible; labels act as pill buttons -->
+              <input type="radio" name="amount" id="amt10" checked>
+              <label for="amt10">$10</label>
+
+              <input type="radio" name="amount" id="amt20">
+              <label for="amt20">$20</label>
+
+              <input type="radio" name="amount" id="amt50">
+              <label for="amt50">$50</label>
+
+              <input type="radio" name="amount" id="amt100">
+              <label for="amt100">$100</label>
+
+              <!-- Results change with CSS only -->
+              <div class="calc-results" aria-live="polite">
+                <p class="calc-result r10">$10 can supply maintenance parts that keep a pump flowing.</p>
+                <p class="calc-result r20">$20 can provide clean water to one person for months.</p>
+                <p class="calc-result r50">$50 can support hygiene training for an entire classroom.</p>
+                <p class="calc-result r100">$100 helps fund materials for a community well.</p>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="cta-row mt-12">
+            <a href="#donate" class="btn btn-cta">Donate This Amount</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Progress Tracker -->
+    <section id="tracker" class="section pad-large">
+      <div class="container">
+        <div class="section-intro">
+          <h2>Together, We’re Making Waves</h2>
+          <p>Track momentum from our student community.</p>
+        </div>
+        <div class="tracker">
+          <div class="progress-block">
+            <div class="progress-label"><span>Global Goal</span><span>65%</span></div>
+            <div class="progress" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" aria-label="Global goal progress">
+              <div class="progress-bar" style="width:65%"></div>
+            </div>
+          </div>
+          <div class="progress-block">
+            <div class="progress-label"><span>This Semester</span><span>40%</span></div>
+            <div class="progress" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" aria-label="This semester progress">
+              <div class="progress-bar" style="width:40%"></div>
+            </div>
+          </div>
+          <div class="progress-block">
+            <div class="progress-label"><span>Your Campus</span><span>80%</span></div>
+            <div class="progress" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="Your campus progress">
+              <div class="progress-bar" style="width:80%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-row mt-16">
+          <a href="#donate" class="btn btn-cta">Keep the Momentum Going</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="section pad-large testimonial">
+      <div class="container">
+        <div class="quote">
+          <p class="quote-text">“Joining this made me feel part of something bigger. Seeing our campus move the needle was unforgettable.”</p>
+          <p class="quote-author">— Student Volunteer, Campus Campaign</p>
         </div>
       </div>
     </section>
