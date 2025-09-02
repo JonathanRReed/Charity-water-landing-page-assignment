@@ -3,15 +3,41 @@
   Beginner-friendly CSS only
 */
 
+/* Self-hosted brand font (subset of weights you provided) */
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("Assests/Proxima Nova/proximanova_regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("Assests/Proxima Nova/proximanova_bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("Assests/Proxima Nova/proximanova_extrabold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  /* Brand palette (approximate) */
-  --yellow: #ffc907;      /* primary accent */
+  /* Brand palette (verified via public references) */
+  --yellow: #FFC907;      /* primary accent */
   --ink: #003366;         /* deep navy */
-  --brown: #b46d53;       /* warm clay */
-  --warm: #fde6da;        /* soft peach bg */
-  --paper: #ffffff;       /* white */
-  --text: #1a1a1a;        /* near-black */
+  --blue: #77A8BB;        /* supporting blue */
+  --cream: #FFF7E1;       /* soft neutral background */
+  --peach: #FED8C1;       /* warm tint */
+  --brown: #BF6C46;       /* clay */
+  --paper: #FFFFFF;       /* white */
+  --text: #1A1A1A;        /* near-black */
   --muted: #6b7280;       /* gray */
+  --gray-200: #CBCCD1;    /* light gray */
 
   --radius: 12px;
   --shadow-1: 0 6px 18px rgba(0,0,0,0.12);
@@ -22,10 +48,10 @@
 html, body { height: 100%; }
 body {
   margin: 0;
-  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: "Proxima Nova", "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   color: var(--text);
   line-height: 1.6;
-  background: var(--warm);
+  background: var(--cream);
 }
 
 img { max-width: 100%; display: block; }
@@ -55,6 +81,7 @@ img { max-width: 100%; display: block; }
 
 .nav { display: flex; gap: 18px; align-items: center; }
 .nav a { color: var(--text); text-decoration: none; font-weight: 600; }
+.nav a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .nav .btn-primary { background: var(--yellow); padding: 8px 14px; border-radius: 999px; box-shadow: var(--shadow-1); transition: transform 160ms ease, box-shadow 160ms ease; }
 .nav .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--shadow-2); }
 
@@ -99,21 +126,14 @@ img { max-width: 100%; display: block; }
   box-shadow: var(--shadow-2);
   transform: rotate(2deg);
   transition: transform 240ms ease;
-}
-.photo-frame::after {
-  content: "";
-  position: absolute;
-  right: -14px; bottom: -14px; width: 80px; height: 80px;
-  background: var(--ink);
-  clip-path: polygon(6% 0, 100% 0, 100% 94%, 0 94%);
-  border-radius: 6px;
+  overflow: hidden; /* keep corners clean */
 }
 .photo-frame:hover { transform: rotate(0deg) translateY(-4px); }
 .photo-frame img { border-radius: 6px; }
 
 /* Sections */
 .section { background: var(--paper); }
-.bg-warm { background: var(--warm); }
+.bg-warm { background: var(--peach); }
 .bg-ink { background: var(--ink); color: #f5f9ff; }
 .pad-large { padding: 52px 0; }
 
@@ -138,6 +158,31 @@ img { max-width: 100%; display: block; }
 .info-card h3 { margin: 0 0 6px; }
 .info-card p { margin: 0; color: var(--muted); }
 
+/* Impact Calculator */
+.impact-calculator { background: var(--paper); }
+.impact-calculator .calc { background: var(--paper); border-radius: var(--radius); box-shadow: var(--shadow-1); padding: 18px; }
+.calc fieldset { border: 1px solid var(--gray-200); border-radius: 10px; padding: 12px; }
+.calc legend { padding: 0 6px; font-weight: 800; }
+.calc-options { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
+.calc-options input { position: absolute; opacity: 0; }
+.calc-options label { cursor: pointer; background: #f3f5f7; border: 1px solid var(--gray-200); padding: 8px 12px; border-radius: 999px; font-weight: 700; transition: transform 140ms ease, background 140ms ease; }
+.calc-options input:focus + label { outline: 3px solid var(--yellow); outline-offset: 2px; }
+.calc-options input:checked + label { background: var(--yellow); color: #2a1d00; }
+.calc-results { min-height: 44px; }
+.calc-result { display: none; margin: 0; color: var(--muted); font-weight: 600; }
+/* Show one result based on radio selection */
+#amt10:checked ~ .calc-results .r10 { display: block; }
+#amt20:checked ~ .calc-results .r20 { display: block; }
+#amt50:checked ~ .calc-results .r50 { display: block; }
+#amt100:checked ~ .calc-results .r100 { display: block; }
+
+/* Progress Tracker */
+.tracker { display: grid; gap: 18px; }
+.progress-block { background: var(--paper); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow-1); }
+.progress-label { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; font-weight: 700; }
+.progress { background: #eef2f6; border-radius: 999px; height: 12px; overflow: hidden; }
+.progress-bar { height: 100%; background: linear-gradient(90deg, var(--yellow), #ffd84f); width: 0; }
+
 /* Stats */
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; text-align: center; }
 .stat { background: var(--paper); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow-1); }
@@ -158,10 +203,20 @@ img { max-width: 100%; display: block; }
 .footer-inner { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
 .small { font-size: 0.9rem; color: var(--muted); }
 
+/* Testimonial */
+.testimonial { background: var(--paper); }
+.testimonial .quote { background: var(--cream); border-left: 6px solid var(--yellow); padding: 18px; border-radius: 8px; box-shadow: var(--shadow-1); }
+.quote-text { font-size: clamp(1.05rem, 2.6vw, 1.3rem); margin: 0; }
+.quote-author { margin: 6px 0 0; color: var(--muted); font-weight: 700; }
+
 /* Utilities & a11y */
 .visually-hidden { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; }
 
 :focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; border-radius: 6px; }
+
+/* Simple spacing utilities to avoid inline styles */
+.mt-12 { margin-top: 12px; }
+.mt-16 { margin-top: 16px; }
 
 /* Responsive */
 @media (min-width: 760px) {
