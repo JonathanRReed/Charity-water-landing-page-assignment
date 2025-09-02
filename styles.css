@@ -1,0 +1,176 @@
+/*
+  Charity: water inspired landing page styles
+  Beginner-friendly CSS only
+*/
+
+:root {
+  /* Brand palette (approximate) */
+  --yellow: #ffc907;      /* primary accent */
+  --ink: #003366;         /* deep navy */
+  --brown: #b46d53;       /* warm clay */
+  --warm: #fde6da;        /* soft peach bg */
+  --paper: #ffffff;       /* white */
+  --text: #1a1a1a;        /* near-black */
+  --muted: #6b7280;       /* gray */
+
+  --radius: 12px;
+  --shadow-1: 0 6px 18px rgba(0,0,0,0.12);
+  --shadow-2: 0 10px 28px rgba(0,0,0,0.16);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+  line-height: 1.6;
+  background: var(--warm);
+}
+
+img { max-width: 100%; display: block; }
+
+.container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+/* Header */
+.site-header {
+  background: var(--paper);
+  border-bottom: 4px solid var(--yellow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+}
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+.brand-logo { height: 36px; width: auto; }
+.brand-name { font-weight: 800; letter-spacing: 0.3px; }
+
+.nav { display: flex; gap: 18px; align-items: center; }
+.nav a { color: var(--text); text-decoration: none; font-weight: 600; }
+.nav .btn-primary { background: var(--yellow); padding: 8px 14px; border-radius: 999px; box-shadow: var(--shadow-1); transition: transform 160ms ease, box-shadow 160ms ease; }
+.nav .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--shadow-2); }
+
+/* Hero */
+.hero {
+  padding: 48px 0 24px;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.hero-copy {
+  background: var(--brown);
+  color: var(--paper);
+  padding: 28px;
+  border-radius: var(--radius);
+  position: relative;
+  box-shadow: var(--shadow-1);
+}
+.tape { position: absolute; left: 16px; top: -10px; width: 90px; height: 22px; background: repeating-linear-gradient(45deg, var(--yellow), var(--yellow) 10px, var(--ink) 10px, var(--ink) 20px); border-radius: 3px; box-shadow: 0 6px 10px rgba(0,0,0,0.15); }
+
+.headline { font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.1; margin: 6px 0 8px; font-weight: 800; }
+.subhead { margin: 0 0 16px; color: #f8fafc; opacity: 0.95; }
+
+.cta-row { display: flex; gap: 12px; align-items: center; }
+.btn { display: inline-block; text-decoration: none; border-radius: 12px; font-weight: 800; letter-spacing: 0.2px; }
+.btn-cta { background: var(--yellow); color: #2a1d00; padding: 12px 18px; box-shadow: var(--shadow-2); transform: rotate(-1.2deg); transition: transform 200ms ease, box-shadow 200ms ease; }
+.btn-cta:hover { transform: rotate(0deg) translateY(-2px) scale(1.02); box-shadow: 0 14px 30px rgba(0,0,0,0.22); }
+
+/* Photo frame with playful tilt */
+.hero-media { justify-self: center; }
+.photo-frame {
+  position: relative;
+  width: min(620px, 95%);
+  margin: 0 auto;
+  background: var(--paper);
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-2);
+  transform: rotate(2deg);
+  transition: transform 240ms ease;
+}
+.photo-frame::after {
+  content: "";
+  position: absolute;
+  right: -14px; bottom: -14px; width: 80px; height: 80px;
+  background: var(--ink);
+  clip-path: polygon(6% 0, 100% 0, 100% 94%, 0 94%);
+  border-radius: 6px;
+}
+.photo-frame:hover { transform: rotate(0deg) translateY(-4px); }
+.photo-frame img { border-radius: 6px; }
+
+/* Sections */
+.section { background: var(--paper); }
+.bg-warm { background: var(--warm); }
+.bg-ink { background: var(--ink); color: #f5f9ff; }
+.pad-large { padding: 52px 0; }
+
+.section-intro { text-align: center; margin-bottom: 28px; }
+.section-intro h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin: 0 0 6px; }
+.section-intro p { margin: 0; color: var(--muted); }
+
+/* Card grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+.info-card {
+  background: var(--paper);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow-1);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.info-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-2); }
+.info-card h3 { margin: 0 0 6px; }
+.info-card p { margin: 0; color: var(--muted); }
+
+/* Stats */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; text-align: center; }
+.stat { background: var(--paper); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow-1); }
+.stat-number { font-weight: 800; font-size: clamp(1.4rem, 4.4vw, 2rem); color: var(--ink); }
+.stat-label { color: var(--muted); font-weight: 600; }
+
+/* Donate */
+.donate-inner { display: grid; gap: 16px; align-items: center; }
+.donate-copy h2 { margin: 0 0 4px; }
+.donate-options { display: flex; flex-wrap: wrap; gap: 10px; }
+.donate-pill { background: #0d3a66; color: #e5f1ff; padding: 10px 14px; border-radius: 999px; text-decoration: none; font-weight: 700; transition: transform 160ms ease, background 160ms ease; }
+.donate-pill:hover { transform: translateY(-2px); background: #144a82; }
+.donate-pill-accent { background: var(--yellow); color: #2a1d00; }
+.btn-cta-dark { background: var(--yellow); color: #1a1a1a; }
+
+/* Footer */
+.site-footer { background: var(--paper); border-top: 1px solid #e5e7eb; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
+.small { font-size: 0.9rem; color: var(--muted); }
+
+/* Utilities & a11y */
+.visually-hidden { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; }
+
+:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; border-radius: 6px; }
+
+/* Responsive */
+@media (min-width: 760px) {
+  .hero { padding: 64px 0; }
+  .hero-grid { grid-template-columns: 1.05fr 1fr; gap: 26px; }
+  .card-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .donate-inner { grid-template-columns: 1.2fr 1fr; align-items: start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
