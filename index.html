@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div id="close" class="visually-hidden" aria-hidden="true"></div>
   <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
@@ -19,7 +20,7 @@
         <a href="#impact">Impact</a>
         <a href="#calculator">Calculator</a>
         <a href="#tracker">Progress</a>
-        <a href="#donate" class="btn btn-primary">Donate</a>
+        <a href="#donate-modal" class="btn btn-primary">Donate</a>
       </nav>
     </div>
   </header>
@@ -33,7 +34,7 @@
           <h1 class="headline">Make Waves, Not Wishes</h1>
           <p class="subhead">See your impact beyond the donate button.</p>
           <div class="cta-row">
-            <a href="#donate" class="btn btn-cta">Donate Now!</a>
+            <a href="#donate-modal" class="btn btn-cta">Donate Now!</a>
           </div>
         </div>
 
@@ -132,7 +133,7 @@
           </fieldset>
 
           <div class="cta-row mt-12">
-            <a href="#donate" class="btn btn-cta">Donate This Amount</a>
+            <a href="#donate-modal-info" class="btn btn-cta">Donate This Amount</a>
           </div>
         </div>
       </div>
@@ -167,7 +168,7 @@
         </div>
 
         <div class="cta-row mt-16">
-          <a href="#donate" class="btn btn-cta">Keep the Momentum Going</a>
+          <a href="#donate-modal" class="btn btn-cta">Keep the Momentum Going</a>
         </div>
       </div>
     </section>
@@ -190,17 +191,103 @@
           <p>Join us to bring clean water to communities in need. Choose an amount to get started.</p>
         </div>
         <div class="donate-options">
-          <a href="#" class="donate-pill" aria-label="Donate $25">$25</a>
-          <a href="#" class="donate-pill" aria-label="Donate $50">$50</a>
-          <a href="#" class="donate-pill" aria-label="Donate $100">$100</a>
-          <a href="#" class="donate-pill donate-pill-accent" aria-label="Donate custom amount">Custom</a>
+          <a href="#donate-modal-info" class="donate-pill" aria-label="Donate $25">$25</a>
+          <a href="#donate-modal-info" class="donate-pill" aria-label="Donate $50">$50</a>
+          <a href="#donate-modal-info" class="donate-pill" aria-label="Donate $100">$100</a>
+          <a href="#donate-modal-info" class="donate-pill donate-pill-accent" aria-label="Donate custom amount">Custom</a>
         </div>
         <div class="cta-row">
-          <a href="#" class="btn btn-cta btn-cta-dark">Donate Now</a>
+          <a href="#donate-modal" class="btn btn-cta btn-cta-dark">Donate Now</a>
         </div>
       </div>
     </section>
   </main>
+
+  <!-- Donation Modal: Step 1 (Amount) -->
+  <section id="donate-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="donate-modal-title">
+    <a href="#close" class="modal-overlay" aria-label="Close"></a>
+    <div class="modal-content">
+      <a href="#close" class="modal-close" aria-label="Close">×</a>
+      <h3 id="donate-modal-title">Choose your donation</h3>
+      <p class="small" style="margin-top:-6px;">Select an amount to continue.</p>
+
+      <form class="calc" action="#donate-modal-info" method="get">
+        <fieldset>
+          <legend>Amount</legend>
+          <div class="calc-options">
+            <input type="radio" name="amount" id="d10" checked>
+            <label for="d10">$10</label>
+            <input type="radio" name="amount" id="d20">
+            <label for="d20">$20</label>
+            <input type="radio" name="amount" id="d50">
+            <label for="d50">$50</label>
+            <input type="radio" name="amount" id="d100">
+            <label for="d100">$100</label>
+            <input type="radio" name="amount" id="dCustom">
+            <label for="dCustom">Custom</label>
+          </div>
+          <div class="field custom-amount">
+            <label for="customAmount">Custom amount</label>
+            <div class="currency-input">
+              <input id="customAmount" name="customAmount" type="number" min="1" step="1" placeholder="Amount" inputmode="numeric">
+            </div>
+          </div>
+        </fieldset>
+        <div class="form-actions">
+          <a class="btn btn-cta" href="#donate-modal-info">Continue</a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Donation Modal: Step 2 (User Info) -->
+  <section id="donate-modal-info" class="modal" role="dialog" aria-modal="true" aria-labelledby="donor-form-title">
+    <a href="#close" class="modal-overlay" aria-label="Close"></a>
+    <div class="modal-content">
+      <a href="#donate-modal" class="modal-back" aria-label="Back">← Back</a>
+      <a href="#close" class="modal-close" aria-label="Close">×</a>
+      <h3 id="donor-form-title">Your Information</h3>
+
+      <form class="form" action="#" method="post">
+        <div class="form-grid">
+          <div class="field">
+            <label for="first">First name</label>
+            <input id="first" name="first" type="text" autocomplete="given-name" required>
+          </div>
+          <div class="field">
+            <label for="last">Last name</label>
+            <input id="last" name="last" type="text" autocomplete="family-name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="campus">Campus/Organization (optional)</label>
+            <input id="campus" name="campus" type="text" autocomplete="organization">
+          </div>
+          <div class="field">
+            <label for="country">Country</label>
+            <select id="country" name="country" required>
+              <option value="" selected disabled>Select...</option>
+              <option>United States</option>
+              <option>Canada</option>
+              <option>United Kingdom</option>
+              <option>Australia</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="zip">Postal Code</label>
+            <input id="zip" name="zip" type="text" autocomplete="postal-code" required>
+          </div>
+        </div>
+        <div class="form-actions">
+          <a href="#close" class="btn btn-cta">Continue to payment</a>
+        </div>
+      </form>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="site-footer">

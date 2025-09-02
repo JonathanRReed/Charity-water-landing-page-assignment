@@ -42,6 +42,7 @@
   --radius: 12px;
   --shadow-1: 0 6px 18px rgba(0,0,0,0.12);
   --shadow-2: 0 10px 28px rgba(0,0,0,0.16);
+  --shadow-3: 0 18px 40px rgba(0,0,0,0.22);
 }
 
 * { box-sizing: border-box; }
@@ -88,6 +89,10 @@ img { max-width: 100%; display: block; }
 /* Hero */
 .hero {
   padding: 48px 0 24px;
+  /* subtle vignette for depth */
+  background:
+    radial-gradient(900px 240px at 20% 4%, rgba(0,0,0,0.06), transparent 60%),
+    radial-gradient(900px 240px at 80% 6%, rgba(0,0,0,0.04), transparent 60%);
 }
 .hero-grid {
   display: grid;
@@ -115,21 +120,35 @@ img { max-width: 100%; display: block; }
 .btn-cta:hover { transform: rotate(0deg) translateY(-2px) scale(1.02); box-shadow: 0 14px 30px rgba(0,0,0,0.22); }
 
 /* Photo frame with playful tilt */
-.hero-media { justify-self: center; }
+.hero-media { justify-self: center; position: relative; }
+.hero-media::after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  bottom: -22px;
+  width: 90%;
+  height: 92%;
+  background: var(--ink);
+  border-radius: 16px;
+  transform: rotate(-8deg);
+  box-shadow: var(--shadow-2);
+  z-index: 0;
+}
+.hero-media .photo-frame { position: relative; z-index: 1; }
 .photo-frame {
   position: relative;
   width: min(620px, 95%);
   margin: 0 auto;
   background: var(--paper);
-  padding: 12px;
-  border-radius: 8px;
-  box-shadow: var(--shadow-2);
-  transform: rotate(2deg);
+  padding: 16px; /* thicker white mat */
+  border-radius: 14px;
+  box-shadow: var(--shadow-3);
+  transform: rotate(3deg);
   transition: transform 240ms ease;
   overflow: hidden; /* keep corners clean */
 }
 .photo-frame:hover { transform: rotate(0deg) translateY(-4px); }
-.photo-frame img { border-radius: 6px; }
+.photo-frame img { border-radius: 10px; }
 
 /* Sections */
 .section { background: var(--paper); }
@@ -218,12 +237,52 @@ img { max-width: 100%; display: block; }
 .mt-12 { margin-top: 12px; }
 .mt-16 { margin-top: 16px; }
 
+/* Modal (CSS-only via :target) */
+.modal { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 200ms ease; z-index: 100; }
+.modal:target { opacity: 1; pointer-events: auto; }
+.modal-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
+.modal-content { position: relative; width: min(680px, 94%); background: var(--paper); border-radius: var(--radius); box-shadow: var(--shadow-2); padding: 20px; }
+.modal-close { position: absolute; top: 10px; right: 12px; text-decoration: none; font-size: 24px; color: var(--muted); line-height: 1; }
+.modal-close:hover { color: var(--text); }
+.modal-back { position: absolute; top: 12px; left: 14px; text-decoration: none; font-weight: 800; color: var(--ink); }
+html:has(.modal:target) { overflow: hidden; }
+
+/* Form basics */
+.form { margin-top: 8px; }
+.form-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.field label { display: block; font-weight: 800; margin-bottom: 6px; }
+.field input, .field select { width: 100%; padding: 10px 12px; border: 1px solid var(--gray-200); border-radius: 8px; background: #fff; font: inherit; color: inherit; }
+.field input:focus, .field select:focus { outline: 3px solid var(--yellow); outline-offset: 2px; }
+.form-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 12px; }
+
+/* Custom amount reveal (CSS-only) */
+.custom-amount { display: none; margin-top: 10px; }
+fieldset:has(#dCustom:checked) .custom-amount { display: block; }
+
+/* Currency prefix styling */
+.currency-input { position: relative; }
+.currency-input::before {
+  content: "$";
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-weight: 800;
+}
+.currency-input input { padding-left: 28px; }
+.currency-input input[type=number]::-webkit-outer-spin-button,
+.currency-input input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.currency-input input[type=number] { appearance: textfield; -moz-appearance: textfield; }
+
 /* Responsive */
 @media (min-width: 760px) {
   .hero { padding: 64px 0; }
   .hero-grid { grid-template-columns: 1.05fr 1fr; gap: 26px; }
   .card-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .donate-inner { grid-template-columns: 1.2fr 1fr; align-items: start; }
+  .form-grid { grid-template-columns: repeat(2, 1fr); }
+  .form-grid .field:nth-child(3) { grid-column: span 2; }
 }
 
 @media (prefers-reduced-motion: reduce) {
