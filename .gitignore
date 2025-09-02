@@ -1,0 +1,46 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Node / package managers
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build outputs and caches
+build/
+dist/
+out/
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.vite/
+.sass-cache/
+
+# Tooling
+coverage/
+.netlify/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+.tmp/
+tmp/
+.temp/
