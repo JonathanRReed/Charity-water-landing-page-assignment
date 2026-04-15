@@ -52,3 +52,9 @@ README.md         # this file
 
 Project by: Jonathan Reed
 Inspired by: charity: water
+
+## License
+
+The HTML and CSS source code in this repository are licensed under MIT.
+Third-party assets, fonts, and trademarks are excluded. See
+[`LICENSE`](./LICENSE) and [`NOTICE.md`](./NOTICE.md).
