@@ -1,60 +1,21 @@
-# Charity: water — Landing Page (Class Assignment)
+# Charity: water landing page
 
-An accessible, beginner-friendly landing page inspired by charity: water. Built with semantic HTML and modern CSS only—no JavaScript—featuring a CSS-only donation modal flow.
-
-## Features
-
-- **CSS-only donation flow** using `:target` and `:has()` (no JS)
-- **Custom donation amount** with currency prefix styling
-- **Accessible forms** with labels, focus states, and ARIA attributes
-- **Self‑hosted fonts** (Proxima Nova)
-- **Responsive layout** with a modern, clean design
+A class assignment by Jonathan Reed, inspired by charity: water. This educational demo uses HTML and CSS, with no JavaScript. The donation interface uses `:target` and `:has()`; it is a mock flow, not a payment service.
 
 ## Preview
 
-Open `index.html` directly in your browser.
-
-## Getting Started
-
-1. Clone or download this folder.
-2. Ensure the fonts and images in `Assests/` remain in place.
-3. Open `index.html` in any modern browser (Chrome, Edge, Safari, Firefox).
-
-## Favicon
-
-The favicon is set to `Assests/CW-favicon.jpg` in the document `<head>`. Update the file in `Assests/` to change it.
-
-## Tech Stack
-
-- HTML5 + CSS3 only
-- CSS selectors: `:target`, `:has()` for interactivity
-- Self-hosted assets under `Assests/
-
-## Project Structure
+Open `index.html` in a modern browser. Keep `Assests/` beside it so images and fonts load.
 
 ```text
-Assests/
-  Proxima Nova/   # self-hosted fonts
-  CW.jpg          # hero image
-  CW-favicon.jpg  # site favicon
-index.html        # main page
-styles.css        # styles
-README.md         # this file
+index.html                  Main page
+styles.css                  Layout, forms, and donation modal
+Assests/Proxima Nova/        Self-hosted fonts
+Assests/CW.jpg               Hero image
+Assests/CW-favicon.jpg       Favicon
 ```
 
-## Notes
-
-- This project is a mock/demo for educational purposes.
-
-- If something looks off, try a hard refresh to clear CSS cache.
-
-## Credits
-
-Project by: Jonathan Reed
-Inspired by: charity: water
+Forms include labels, focus states, and ARIA attributes. The layout adapts to screen size and supports a custom donation amount.
 
 ## License
 
-The HTML and CSS source code in this repository are licensed under MIT.
-Third-party assets, fonts, and trademarks are excluded. See
-[`LICENSE`](./LICENSE) and [`NOTICE.md`](./NOTICE.md).
+HTML and CSS source use [MIT](LICENSE). Third-party assets, fonts, and trademarks are excluded. See [NOTICE.md](NOTICE.md).
